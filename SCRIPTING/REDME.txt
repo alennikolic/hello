@@ -1,0 +1,18 @@
+Author: Alen Nikolic
+Date: 13.11.2019.
+
+Scripts:
+rename.sh 	DATESTAMP is date when new file is created
+rename_v2.sh 	DATESTAMP is date when original file is created
+
+How to start script:
+1. Copy rename.sh file in /temp
+2. Make rename.sh file executable:
+	chmod +x /temp/rename.sh
+
+3. Open rename.sh file and change FILES variable. FILES is location of your .wav files
+
+4. Run script with command:
+	cd /temp
+	./rename.sh
+
