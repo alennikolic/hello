@@ -13,9 +13,9 @@ do
     
         if [[ "$file" == *"$STRING" ]]; then
 
-        echo "File "$file" is now: "$newfilename;
-        # mv $file $newfilename
-        var=$((var+1))
+            echo "File "$file" is now: "$newfilename;
+            mv $file $newfilename
+            var=$((var+1))
         fi
     fi
 done
