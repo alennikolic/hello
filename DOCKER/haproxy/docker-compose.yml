@@ -1,0 +1,40 @@
+version: '2'
+services:
+    haproxy:
+        build: ./haproxy
+        container_name: haproxy
+        ports:
+            - 80:80
+        expose:
+            - 80
+        networks:
+            app_net:
+                ipv4_address: 192.168.0.10
+    blueapp:
+        container_name: blueapp
+        build: ./blueapp
+        ports:
+            - 81:80
+        expose:
+            - 80
+        networks:
+            app_net:
+                ipv4_address: 192.168.0.11
+    greenapp:
+        container_name: greenapp
+        build: ./greenapp
+        ports:
+            - 82:80
+        expose:
+            - 80
+        networks:
+            app_net:
+                ipv4_address: 192.168.0.12
+                
+networks:
+    app_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.0.0/24
