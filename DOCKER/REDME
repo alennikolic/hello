@@ -1,3 +1,4 @@
-git clone https://github.com/alennikolic/hello/DOCKER
+git clone https://github.com/alennikolic/hello
+cd hello
 cd DOCKER
 docker-compose up
