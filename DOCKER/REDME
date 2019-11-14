@@ -1,4 +1,11 @@
-git clone https://github.com/alennikolic/hello
-cd hello
-cd DOCKER
-docker-compose up
+Author: Alen Nikolic
+Date: 14.11.2019.
+
+Description: Docker composer file with haprxy and 2 negix apps (greenapp and blueapp).
+
+Installation commands:
+ 
+1.  git clone https://github.com/alennikolic/hello
+2.  cd hello
+3.  cd DOCKER
+4.  docker-compose up
