@@ -6,18 +6,27 @@ var=0
 
 for file in $FILES
 do
-	datestamp=$(stat -c %y $file)
-	datestamp=${datestamp%% *}
+    datestamp=$(stat -c %y $file)
+    datestamp=${datestamp%% *}
 
+    STR2="_`printf %03d $var`"
+    newfilename="$STR1$datestamp$STR2$STRING"
 
-    newfilename="audiofile_"$datestamp"_`printf %03d $var`"$STRING
-    if [ ! -f $newfilename ]; then
-    
-        if [[ "$file" == *"$STRING" ]]; then
+    if [[ "$file" == *"$STR1"* ]]
+    then
+        echo "File $file content $STR1"
 
-       	 	echo "File "$file" is now: "$newfilename;
+    elif [[ -f $newfilename ]] 
+    then
+        echo "File $file alredy exist"
+ 
+    elif [[ "$file" == *"$STRING" ]] 
+    then
+
+       	 	echo "File "$file" is now: "$newfilename
         	mv $file $newfilename
         	var=$((var+1))
-        fi
+    else
+	echo "Nothing has changed for $file" 
     fi
 done
