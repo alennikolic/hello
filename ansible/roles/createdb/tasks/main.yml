@@ -1,0 +1,21 @@
+- name: Install PostgreSQL packages
+  apt:
+    pkg:
+    - postgresql
+    - postgresql-contrib
+    - libpq-dev
+    - python-psycopg2
+
+- name: Ensure the PostgreSQL service is running
+  service: name=postgresql state=started
+
+- name: Ensure postgresql runs on server startup
+  service: name=postgresql enabled=yes
+
+- name: Enable inbound postgresql network connections from the network range 10.231.0.0/16  
+  ufw:
+    rule: allow
+    direction: in
+    proto: tcp
+    src: 10.231.0.0/16
+    to_port: '5432'

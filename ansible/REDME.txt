@@ -1,0 +1,54 @@
+Author: Alen Nikolic
+Date: 15.11.2019
+
+Description:
+Ansible Server: Ubuntu 18.04
+Ansible node (remote server): Ubuntu 18.04
+
+
+Install Ansible Server on Ubuntu 18.04:
+####################################################
+Commands:
+	sudo apt-get update
+	sudo apt-add-repository ppa:ansible/ansible
+	sudo apt-get update
+	sudo apt-get install python -y
+	sudo apt-get install ansible -y
+
+
+Enable ssh connection without password from Ansible Control Server to remote server:
+#############################################################################
+1. Generate SSH key on Ansimble Server
+	ssh-keygen
+
+2. Copy contents ~/.ssh/id_rsa.pub (from Ansimble Server) on ~/.ssh/authorized_keys on remote server
+	OR ssh-copy-id ip_address_of_remote_server
+
+
+3. Add sudo user (asbuser) on remote server
+	sudo vi /etc/sudoers
+add this in file:
+	asbuser ALL=(ALL) NOPASSWD:ALL
+
+
+
+Run Ansible
+#################################################
+1. Clone git repository:
+
+	git clone https://github.com/alennikolic/hello
+	cd hello
+	cd ansible
+
+2. Edite hosts file hello/ansible/hosts:
+	vi hosts
+	-------
+	[dbservers]
+	192.168.1.1
+
+192.168.1.1 is address of db server
+
+
+2. Run ansible playbook:
+	ansible-playbook playbook.yml -i hosts
+
